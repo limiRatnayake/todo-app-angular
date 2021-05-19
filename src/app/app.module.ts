@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+import {FormsModule} from "@angular/forms";
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -9,10 +11,11 @@ import { TodoListItemsComponent } from './components/todo-list-items/todo-list-i
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AddTaskComponent } from './components/add-task/add-task.component';
 import { ViewTaskComponent } from './components/view-task/view-task.component';
+import { UpdateTaskComponent } from './components/update-task/update-task.component';
 
 const appRoute: Routes = [
   {path: '', component: TodoListComponent},
-  {path: 'view-task', component: ViewTaskComponent}
+  {path: 'view-task/:id', component: ViewTaskComponent}
 ]
 
 @NgModule({
@@ -22,12 +25,15 @@ const appRoute: Routes = [
     TodoListComponent,
     TodoListItemsComponent,
     AddTaskComponent,
-    ViewTaskComponent
+    ViewTaskComponent,
+    UpdateTaskComponent
   ],
   imports: [
     BrowserModule,
     FontAwesomeModule,
-    RouterModule.forRoot(appRoute, {enableTracing:true})
+    RouterModule.forRoot(appRoute, {enableTracing:true}),
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

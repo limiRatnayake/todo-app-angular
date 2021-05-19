@@ -1,11 +1,13 @@
-<div class="add-task d-grid col-3 mx-auto">
-  <button class="btn" (click)="openVerticallyCentered(addTask)">
-    New Task
-  </button>
+<div class="mx-auto">
+  <fa-icon
+    class="px-4"
+    [icon]="faEdit"
+    (click)="openVerticallyCentered(addTask)"
+  ></fa-icon>
 
   <ng-template #addTask let-modal>
     <div class="modal-header">
-      <h4 class="modal-title">Add New Task</h4>
+      <h4 class="modal-title">Update New Task</h4>
       <button
         type="button"
         class="btn btn-outline-secondary close"
@@ -16,13 +18,14 @@
       </button>
     </div>
     <div class="modal-body">
-      <form class="add-form" (ngSubmit)="onSubmit()">
+      <form class="add-form" (ngSubmit)="onUpdate()">
         <div class="mb-3">
           <label for="title" class="form-label">Title</label>
           <input
             type="text"
             name="title"
             [(ngModel)]="title"
+            (ngModelChange)="todo.title = $event"
             class="form-control"
             id="title"
             placeholder="Title"
@@ -33,6 +36,7 @@
           <textarea
             name="description"
             [(ngModel)]="description"
+            (ngModelChange)="todo.description = $event"
             class="form-control"
             id="description"
             rows="3"
@@ -44,6 +48,7 @@
             type="text"
             name="createdAt"
             [(ngModel)]="createdAt"
+            (ngModelChange)="todo.createdAt = $event"
             class="form-control"
             id="createdAt"
             placeholder="Date"
@@ -51,14 +56,14 @@
         </div>
 
         <!-- <div class="form-control form-control-check">
-            <label for="Reminder">Set Reminder</label>
-            <input type="checkbox" name="reminder" id="reminder" />
-          </div> -->
+              <label for="Reminder">Set Reminder</label>
+              <input type="checkbox" name="reminder" id="reminder" />
+            </div> -->
 
         <input type="submit" value="Save Task" class="btn btn-primary" />
       </form>
     </div>
-    <div class="modal-footer">
+    <!-- <div class="modal-footer">
       <button
         type="button"
         class="btn btn-primary"
@@ -66,6 +71,6 @@
       >
         Close
       </button>
-    </div>
+    </div> -->
   </ng-template>
 </div>

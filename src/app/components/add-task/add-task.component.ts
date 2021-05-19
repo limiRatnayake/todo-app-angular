@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {Todo} from '../../Todo'
 
 
 @Component({
@@ -8,7 +9,10 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./add-task.component.css']
 })
 export class AddTaskComponent implements OnInit {
-  closeResult: string ='';
+  @Output() onAddTodo: EventEmitter<Todo> = new EventEmitter()
+  title: string = '';
+  description: string = '';
+  createdAt: string = '';
  
   constructor(private modalService: NgbModal) { }
 
@@ -17,5 +21,24 @@ export class AddTaskComponent implements OnInit {
   openVerticallyCentered(content: any) {
     this.modalService.open(content, { centered: true });
   }
- 
+ onSubmit(){
+   //simple validation
+   if(!this.title){
+     alert("Please add a task")
+     return;
+   }
+//passing data
+   const newTodo = {
+      title: this.title,
+      description: this.description,
+      createdAt: this.createdAt
+   }
+   //emit to parent class
+    this.onAddTodo.emit(newTodo);
+
+  //clear the form
+   this.title ='';
+   this.description ='';
+   this.createdAt ='';
+ }
 }

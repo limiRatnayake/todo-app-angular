@@ -3,7 +3,12 @@
     <h5>Work</h5>
   </div>
   <div class="task-list">
-    <app-todo-list-items></app-todo-list-items>
+    <app-todo-list-items
+      *ngFor="let todo of todos"
+      [todo]="todo"
+      (onDeleteTodo)="deleteTodo(todo)"
+      (onUpdatedTodo)="updatedTodo(todo)"
+    ></app-todo-list-items>
   </div>
-  <app-add-task></app-add-task>
+  <app-add-task (onAddTodo)="addTodo($event)"></app-add-task>
 </div>

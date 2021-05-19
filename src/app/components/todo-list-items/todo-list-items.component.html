@@ -1,17 +1,29 @@
-<div class="list-group">
-  <a
-    routerLink="/view-task"
-    class="list-group-item list-group-item-action"
-    aria-current="true"
-  >
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">List group item heading</h5>
+<div class="todo-card d-flex justify-content-between">
+  <!-- <a aria-current="true"> -->
+  <div routerLink="/view-task/{{ todo.id }}" class="todo-details">
+    <h5 class="title">{{ todo.title }}</h5>
+    <div class="details">
+      <p>
+        {{ todo.description }}
+      </p>
+      <small>{{ todo.createdAt }}</small>
+    </div>
+  </div>
+  <div class="options d-flex justify-content-center align-items-center">
+    <app-update-task [todo]="todo" (updatedTodo)="updatedTodo($event)">
+    </app-update-task>
+
+    <fa-icon (click)="onDelete(todo)" [icon]="faTrashAlt"></fa-icon>
+  </div>
+
+  <!-- <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1">{{ todo.title }}</h5>
       <div class="">
-        <fa-icon class="px-4" [icon]="faEdit"></fa-icon>
+        <fa-icon class="px-4" [icon]="faEdit" (click)="onDelete()"></fa-icon>
         <fa-icon [icon]="faTrashAlt"></fa-icon>
       </div>
     </div>
-    <p class="mb-1">Some placeholder content in a paragraph.</p>
-    <small>2015/09/12</small>
-  </a>
+    <p class="mb-1">{{ todo.description }}</p>
+    <small>{{ todo.createdAt }}</small> -->
+  <!-- </a> -->
 </div>
