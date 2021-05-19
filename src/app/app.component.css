@@ -1,0 +1,20 @@
+.main-container {
+  min-height: 100vh;
+  background: linear-gradient(to right top, #09c6f9, #045de9);
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.glass-container {
+  /* background: linear-gradient(
+        to right top,
+        rgba(255, 255, 255, 0.25),
+        rgba(255, 255, 255, 0.1)
+      ); */
+  background: #fffffc;
+  min-height: 80vh;
+  /* margin: 10px; */
+  border-radius: 5rem;
+  padding: 16px 30px;
+}

@@ -1,0 +1,55 @@
+<div class="add-task d-grid col-3 mx-auto">
+  <button class="btn" (click)="openVerticallyCentered(addTask)">
+    New Task
+  </button>
+
+  <ng-template #addTask let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title">Add New Task</h4>
+      <button
+        type="button"
+        class="btn btn-outline-secondary close"
+        aria-label="Close"
+        (click)="modal.dismiss('Cross click')"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form class="add-form">
+        <div class="mb-3">
+          <label for="title" class="form-label">Title</label>
+          <input
+            type="text"
+            class="form-control"
+            id="title"
+            placeholder="Title"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="description" class="form-label">Example textarea</label>
+          <textarea class="form-control" id="description" rows="3"></textarea>
+        </div>
+        <div class="mb-3">
+          <label for="day" class="form-label">Day</label>
+          <input type="text" class="form-control" id="day" placeholder="Date" />
+        </div>
+        <!-- <div class="form-control form-control-check">
+            <label for="Reminder">Set Reminder</label>
+            <input type="checkbox" name="reminder" id="reminder" />
+          </div> -->
+
+        <input type="submit" value="Save Task" class="btn btn-primary" />
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button
+        type="button"
+        class="btn btn-primary"
+        (click)="modal.close('Close click')"
+      >
+        Close
+      </button>
+    </div>
+  </ng-template>
+</div>
