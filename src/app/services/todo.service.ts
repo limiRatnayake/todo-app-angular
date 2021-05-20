@@ -20,9 +20,9 @@ export class TodoService {
 
     return this.http.get<Todo[]>(this.apiURL)
   }
-  getTodoByID(id: number):Observable <Todo[]>{
+  getTodoByID(id: number):Observable <Todo>{
     const url= `${this.apiURL}/${id}`;
-    return this.http.get<Todo[]>(url)
+    return this.http.get<Todo>(url)
   }
   addTodo(todo: Todo):Observable <Todo[]>{
     return this.http.post<Todo[]>(this.apiURL, todo, httpOptions)

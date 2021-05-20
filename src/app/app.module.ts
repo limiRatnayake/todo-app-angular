@@ -13,6 +13,8 @@ import { AddTaskComponent } from './components/add-task/add-task.component';
 import { ViewTaskComponent } from './components/view-task/view-task.component';
 import { UpdateTaskComponent } from './components/update-task/update-task.component';
 
+import {TodoService} from './services/todo.service'
+
 const appRoute: Routes = [
   {path: '', component: TodoListComponent},
   {path: 'view-task/:id', component: ViewTaskComponent}
@@ -35,7 +37,7 @@ const appRoute: Routes = [
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [TodoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

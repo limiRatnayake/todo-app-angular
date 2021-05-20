@@ -10,10 +10,10 @@ import {Todo} from '../../Todo';
 })
 export class ViewTaskComponent implements OnInit {
 
-  todos: Todo[] = [];
  title: string = "";
  description: string = '';
  createdAt: string = '';
+
 
   faArrowLeft=faArrowLeft; 
   name: string = '';
@@ -22,10 +22,13 @@ export class ViewTaskComponent implements OnInit {
   ngOnInit(): void {
     const routeParams = this.route.snapshot.paramMap;
     const todoID = Number(routeParams.get('id'));
-    this.todoService.getTodoByID(todoID).subscribe((data) =>(
-
-this.todos =data
-    ))
+    this.todoService.getTodoByID(todoID).subscribe((response) => {
+        this.title = response.title;
+        this.description = response.description;
+        this.createdAt = response.createdAt;
+     
+    } );
+    
   }
 
  
